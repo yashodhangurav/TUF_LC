@@ -49,25 +49,31 @@ int longestConsecutive(vector<int> nums){
     sort(nums.begin(), nums.end());                 //sorting the array
 
     int n = nums.size();
+    if(n == 0) return 0;
 
-    int longest = 1;
-    unordered_set<int> s;        //creating a set of the numbers for O(1) lookups
-    
-    for(int i = 0; i<n; i++){
+    unordered_set<int> s;
+    for(int i = 0; i < n; i++){
         s.insert(nums[i]);
     }
 
-    for(auto it: s){
-        if(s.find(it-1) == s.end()){     //if the previous number is not present in the set, then we can start counting from the current number
+    int longest = 0;
+
+    for(auto it : s){
+        // check if it's the start of a sequence
+        if(s.find(it - 1) == s.end()){
             int count = 1;
-            int currentNum = it;
-            while(s.find(currentNum+1) != s.end()){ //if the next number is present in the set, we can increase the count and move to the next number
+            int currNum = it;
+
+            // FIXED LOOP
+            while(s.find(currNum + 1) != s.end()){
+                currNum++;
                 count++;
-                currentNum++;
             }
-            longest = max(longest, count);                 //update the longest length
+
+            longest = max(longest, count);
         }
     }
+
     return longest;
 };
 
