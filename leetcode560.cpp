@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<unordered_map>
 using namespace std;
 
 
@@ -47,19 +48,23 @@ using namespace std;
 
 // =====================OPTIMISED APPROACH==========================================
 
-int main(){
+int main(){                          //Time Complexity: O(n log n) and Space Complexity: O(n)
     vector<int> arr = {1,2,3,-3,1,1,1,4,2,-3};
     int n = arr.size();
     int key = 3;
 
+    unordered_map<int, int> mpp;
+    mpp[0] = 1;
     int count = 0;
+    int preSum = 0;
+
     for(int i = 0; i<n; i++){
-        int sum = 0;
-        for(int j = i; j<n; j++){
-            sum  += arr[j];  
-            if(sum == key) count++; 
-        } 
+        preSum += arr[i];
+        int remove = preSum - key;
+        count += mpp[remove];
+        mpp[preSum]++;
     }
+
     cout<<count;
     return 0;
 }
