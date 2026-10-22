@@ -53,3 +53,39 @@ class Solution {
           return prev[target];
       }
   };
+
+
+
+//   // Tabulation using 2D DP
+// bool isSubsetSum(vector<int>& arr, int target) {
+//     int n = arr.size();
+
+//     vector<vector<bool>> dp(n, vector<bool>(target + 1, false));
+
+//     // Base case: target 0 is always possible
+//     for (int i = 0; i < n; i++) {
+//         dp[i][0] = true;
+//     }
+
+//     // Base case: first element
+//     if (arr[0] <= target) {
+//         dp[0][arr[0]] = true;
+//     }
+
+//     // Fill the DP table
+//     for (int ind = 1; ind < n; ind++) {
+//         for (int T = 1; T <= target; T++) {
+
+//             bool notTake = dp[ind - 1][T];
+
+//             bool take = false;
+//             if (arr[ind] <= T) {
+//                 take = dp[ind - 1][T - arr[ind]];
+//             }
+
+//             dp[ind][T] = take || notTake;
+//         }
+//     }
+
+//     return dp[n - 1][target];
+// }
