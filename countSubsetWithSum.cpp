@@ -2,7 +2,7 @@ class Solution {
     public:
       // int f(int ind, vector<int> &arr, int target,vector<vector<int>> &dp){
       //     if (ind == 0) {
-      //         if (target == 0 && arr[0] == 0) return 2;
+      //         if (target == 0 && arr[0] == 0) return 2;                          //we can form 2 ways to form subsequences by taking or nottaking so returning 2
       //         if (target == 0 || arr[0] == target) return 1;
       //         return 0;
       //     }
@@ -25,10 +25,9 @@ class Solution {
       //          vector<vector<int>> dp(n,vector<int>(target+1,0));
   
   
-      //         if (arr[0] == 0) {
-      //                  dp[0][0] = 2;
-      //              } else {
-      //                  dp[0][0] = 1;
+      //         if (arr[0] == 0) dp[0][0] = 2;
+      //         else {
+      //               dp[0][0] = 1;
       //                  if (arr[0] <= target) {
       //                      dp[0][arr[0]] = 1;
       //                  }
